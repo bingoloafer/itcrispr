@@ -1,4 +1,4 @@
-include README.txt README.pdf LICENSE.txt
+include README.rst README.pdf LICENSE.txt
 include itcrispr/itcrispr.cfg
 include itcrispr/itcrispr-menu.bns
 recursive-include itcrispr/tests/data *.cfg

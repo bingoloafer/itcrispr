@@ -1,6 +1,6 @@
 LICENSE.txt
 README.pdf
-README.txt
+README.rst
 run_itcrispr.py
 setup.py
 itcrispr\__init__.py

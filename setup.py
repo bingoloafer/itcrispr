@@ -13,7 +13,7 @@ setup(name="itcrispr",
                     "itcrispr.tests": ["data/*.cfg", "data/primer-newline.txt",
                                        "data/dups/*.txt",
                                        "data/primers/*.txt"]},
-      data_files=[("", ["README.txt", "README.pdf", "LICENSE.txt"])],
+      data_files=[("", ["README.rst", "README.pdf", "LICENSE.txt"])],
       scripts=["run_itcrispr.py"],
       requires=["PyQt4"]
 )
