@@ -1,0 +1,62 @@
+{
+    "embeddedFonts": [
+        [
+            "PTF55F.ttf", 
+            "PTF75F.ttf", 
+            "PTF56F.ttf", 
+            "PTF76F.ttf"
+        ]
+    ], 
+    "fontsAlias": {
+        "stdBold": "PTF75F", 
+        "stdBoldItalic": "PTF76F", 
+        "stdFont": "PTF55F", 
+        "stdItalic": "PTF56F", 
+        "stdMono": "PT Mono"
+    }, 
+    "styles": [
+        [
+            "base", 
+            {
+                "borderRadius": 2, 
+                "kerning": "true"
+            }
+        ], 
+        [
+            "code", 
+            {
+                "backColor": "#fafafa", 
+                "borderWidth": 0.10000000000000001, 
+                "fontSize": 9, 
+                "spaceAfter": 6, 
+                "spaceBefore": 6, 
+                "textColor": black
+            }
+        ], 
+        [
+            "admonition", 
+            {
+                "backColor": "#E6F2FF", 
+                "borderPadding": [
+                    8, 
+                    8, 
+                    8, 
+                    8
+                ], 
+                "borderRadius": 2
+            }
+        ], 
+        [
+            "warning", 
+            {
+                "backColor": "#FFCC80"
+            }
+        ], 
+        [
+            "literal", 
+            {
+                "backColor": "#eeeff2"
+            }
+        ]
+    ]
+}
