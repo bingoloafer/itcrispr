@@ -66,7 +66,7 @@ Usage
    window will then be displayed with the list of primers that aligned with the 
    sequences. Double-click on a primer to navigate to that region in the assembler.
    
-   .. image:: images/screenshot.jpg
+   .. image:: https://raw.github.com/vkvn/itcrispr/master/images/screenshot.jpg
       
 #. If you consider an experiment for an entry as finished, click the 
    **Save as Finished** button. No primer should be checked. Use the 
@@ -138,5 +138,5 @@ Add or remove primers to/from the location specified in the configuration
 file - the :literal:`PRIMER_PATH` variable.
 
 
-.. |icon| image:: images/logo.png
+.. |icon| image:: https://raw.github.com/vkvn/itcrispr/master/images/logo.png
           :scale: 15%
