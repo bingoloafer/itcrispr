@@ -30,6 +30,10 @@ def getPrimers(primer_path, extension="txt"):
 		return primer_list, messages
 
 	files = getList(primer_path, extension)
+	if not len(files):
+		messages.append("No primer files found at \n{0}\n".format(primer_path))
+		return primer_list, messages
+
 	for item in files:
 		primer_name, primer_seq = readPrimer(item)
 		if primer_seq in primer_list.values():

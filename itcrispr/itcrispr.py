@@ -132,7 +132,7 @@ class Window(QMainWindow, ui_mainwindow.Ui_MainWindow):
 			txt << "\n".join(item for item in data)  # IGNORE:W0106
 			self.statusBar().showMessage("Database export complete", 5000)
 			QMessageBox.information(self, "Information",
-								("Database export complete: "
+								("Database exported to: "
 								"<p><font color='blue'>{0}</blue>"
 								"</p>".format(str(fname.fileName()))))
 
@@ -344,6 +344,8 @@ def main(path, context):
 		"PRIMER_PATH": ""}
 
 	cfg_file = os.path.join(path, "itcrispr", "itcrispr.cfg")
+	cfg_loc = ("<br><br>The configuration file is at <br><br>"
+			"<font color=blue>{0}</font>".format(cfg_file))
 	config = ConfigParser.RawConfigParser()
 	config.readfp(open(cfg_file))
 
@@ -352,12 +354,13 @@ def main(path, context):
 		try:
 			value = config.get("configuration", item)
 		except ConfigParser.NoOptionError:
-			QMessageBox.critical(None, "Error", "{0} is not defined in "\
-								"configuration file".format(item))
+			QMessageBox.critical(None, "Error", "<b>{0}</b> is not defined in "\
+								"configuration file {1}".format(item, cfg_loc))
 			Stop()
 		if not len(value):
-			QMessageBox.critical(None, "Cannot read {0} from configuration"\
-								" file. Is it defined?".format(item))
+			QMessageBox.critical(None, "Error", "Cannot read <b>{0}</b> from "\
+								"configuration file. "\
+								"Is it defined? {1}".format(item, cfg_loc))
 			Stop()
 		if CFG_DEFS[item]["type"] == "string":
 			cfg[item] = value
@@ -365,10 +368,14 @@ def main(path, context):
 			cfg[item] = value.split(",")
 
 	if not BNDB in cfg["DATABASES"]:
-		msg = ("Sorry. I can only run inside the following "
-		"databases.<br><br><strong>{0}</strong><br><br>If you are "
-		"sure, please add this database to the configuration "
-		"file<br>{1}".format(", ".join(cfg["DATABASES"]), cfg_file))
+		msg = """Sorry. I can only run inside the following databases.<br><br>\
+		<strong>{0}</strong><br><br>
+		If you are sure, please update the <b>DATABASES</b> section of the \
+		configuration file using a text editor like this<br><br>\
+		<b><code>DATABASES={0},{1}</code></b><br><br>\
+		The configuration file is at <br><br>\
+		<font color=blue>{2}</font>""".format(", ".join(cfg["DATABASES"]),
+											BNDB, cfg_file)
 		QMessageBox.information(None, "Information", msg)
 		Stop()
 
@@ -417,11 +424,11 @@ def main(path, context):
 											cfg["EXTENSION"])
 	# TODO: continue on duplicate primers
 	if len(messages):
-		msg = ("Error while reading primer files<br>{0}"
+		msg = ("Error while reading primer files<br><br>{0}"
 		"<br>".format("\n".join(messages)))
 		if not len(primer_data):
 			msg += ("Please check if correct primer path is "
-			"defined in configuration file")
+			"defined in configuration file {0}".format(cfg_loc))
 		QMessageBox.critical(None, "Warning", msg)
 		Stop()
 
